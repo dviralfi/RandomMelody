@@ -9,7 +9,8 @@ Written by *Dvir Alfi* .
 The program is written in Python and uses the Midiutil package for MIDI file manipulation.
 
 It provides a MIDI file that contains chords :notes: and melody :musical_note: , written totally randomly by the program.
-The MIDI file can easily be used by your favorite DAW[^1].
+
+The MIDI file can easily be used by your favorite DAW[^1]. :control_knobs:
 
 
 ## Installation Guide 
@@ -19,7 +20,8 @@ Just download the Python file 'RandoMMelodyGenerator.py' file, and run it, you a
 ### requirements
 
 A Python Interpreter :snake:
-The *Midiutil* package that you can easily install with pip (write this command in cmd) : `pip install midiutil`
+
+The *Midiutil* package that you can easily install with pip (write this command in cmd) : `pip install midiutil` 
 
 #### Optional Arguments
 
