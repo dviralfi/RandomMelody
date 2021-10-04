@@ -75,6 +75,10 @@ SCALES_TYPE_LIST = ['aeolian', 'blues', 'bachian', 'chromatic', 'dorian', 'harmo
 'naturalminor', 'octatonic', 'phrygian', 'pentatonic',  'wholetone']
 """
 
+SILENCE_DURATIONS_LIST = [0.5, 1, 1.5]
+NOTE_DURATIONS_LIST =  [0.5, 0.75, 1, 1.5, 2]
+
+
 ROMAN_LETTERS_VALUE_DICT = {'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5, 'VI': 6, 'VII': 7}
 
 CHORDS_SEQUENCE_DICT = {'major': (0, 2, 2),
@@ -261,11 +265,11 @@ def generate_random_melody(requested_melody_length, midi_file, melody_track, sca
             pitch_letter = random.choice(scale_notes)
             pitch = DIATONIC_KEYS_PITCH_DICT[pitch_letter]
 
-            duration = random.choice([0.5, 0.75, 1, 1.5, 2])
+            duration = random.choice(NOTE_DURATIONS_LIST)
             if requested_melody_length - current_melody_length < 0.25:
                 break
             while duration > requested_melody_length - current_melody_length:
-                duration = random.choice([0.5, 0.75, 1, 1.5, 2])
+                duration = random.choice(NOTE_DURATIONS_LIST)
 
             # continuing from the preview note:
             note_time = current_melody_length
@@ -279,18 +283,18 @@ def generate_random_melody(requested_melody_length, midi_file, melody_track, sca
         # 30% chance and silence is added to the file:
         elif chance_for_rest > random_chance > chance_for_adding:
             # Adding rest (silence):
-            duration_of_rest = random.choice([0.5, 1, 1.5])
+            duration_of_rest = random.choice(SILENCE_DURATIONS_LIST)
             if requested_melody_length - current_melody_length < 0.5:
                 break
 
             while duration_of_rest > requested_melody_length - current_melody_length:
-                duration_of_rest = random.choice([0.5, 1, 1.5])
+                duration_of_rest = random.choice(SILENCE_DURATIONS_LIST)
 
             current_melody_length += duration_of_rest
             continue
 
         #  Here it Adds an Adding:
-        if random.choice([0, 1, 2]) > 0:
+        if random.choice([0, 1, 2, 3]) > 0:
             #  triplets of notes
             if requested_melody_length - current_melody_length < 0.75:  # calculating the remaining time left.
                 break
