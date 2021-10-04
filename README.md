@@ -1,7 +1,7 @@
 # RandomMelody 
 Automatic Music Maker :loud_sound:	
 
-Written by *Dvir Alfi.
+Written by *Dvir Alfi* .
 
 ### Developed to make music making easy and fast. :musical_score:
 **Random Melody is an Automatic Music Maker for musicians, composers and everyone that loves and are fascinated by music. :headphones: :microphone: :radio:
