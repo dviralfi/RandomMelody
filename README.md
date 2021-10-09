@@ -12,6 +12,7 @@ It provides a MIDI file that contains chords :notes: and melody :musical_note: ,
 
 The MIDI file can easily be used by your favorite DAW[^1]. :control_knobs:
 
+* If you don't have such program, you can use this website, that convert midi file to actual music : https://onlinesequencer.net/import
 
 ## Installation Guide 
 
