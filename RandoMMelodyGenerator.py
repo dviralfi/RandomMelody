@@ -75,9 +75,9 @@ SCALES_TYPE_LIST = ['aeolian', 'blues', 'bachian', 'chromatic', 'dorian', 'harmo
 'naturalminor', 'octatonic', 'phrygian', 'pentatonic',  'wholetone']
 """
 
-SILENCE_DURATIONS_LIST = [0.5, 1, 1.5]
-NOTE_DURATIONS_LIST =  [0.5, 0.75, 1, 1.5, 2]
-
+SILENCE_DURATIONS_LIST = [0.5, 1]
+NOTE_DURATIONS_LIST = [0.5, 1, 2]
+ADDINGS_DURATIONS_LIST = [0.25, 0.5]
 
 ROMAN_LETTERS_VALUE_DICT = {'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5, 'VI': 6, 'VII': 7}
 
@@ -149,8 +149,8 @@ def get_unique_file_name(file_path, basename, ext):
 
     while os.path.exists(file_name):
         file_name = file_path + '/' + "{basename}_{number}.{ext}".format(basename=basename,
-                                                                              number=next(available_numbers_counter),
-                                                                              ext=ext)
+                                                                         number=next(available_numbers_counter),
+                                                                         ext=ext)
     return file_name
 
 
@@ -217,7 +217,6 @@ def generate_chord_progression(requested_melody_length, midi_file, chords_track,
     # chords_list = for example  [['E', 'G#', 'B'], ['B', 'D#', 'F#'], ['C#', 'E', 'G#'], ['A', 'C#', 'E']]
     chords_list = [get_chord_notes_by_num(scale_notes,
                                           ROMAN_LETTERS_VALUE_DICT[x.upper()]) for x in chord_progression_values]
-    print(chords_list)
 
     duration = int(requested_melody_length / 4)
 
@@ -265,14 +264,15 @@ def generate_random_melody(requested_melody_length, midi_file, melody_track, sca
             pitch_letter = random.choice(scale_notes)
             pitch = DIATONIC_KEYS_PITCH_DICT[pitch_letter]
 
+            # continuing from the preview note:
+            note_time = current_melody_length
+
             duration = random.choice(NOTE_DURATIONS_LIST)
-            if requested_melody_length - current_melody_length < 0.25:
+            if requested_melody_length - current_melody_length < min(NOTE_DURATIONS_LIST):
                 break
             while duration > requested_melody_length - current_melody_length:
                 duration = random.choice(NOTE_DURATIONS_LIST)
 
-            # continuing from the preview note:
-            note_time = current_melody_length
             # Adding the note to the Midi file:
             midi_file.addNote(melody_track, channel, pitch, note_time, duration, volume)
 
@@ -284,7 +284,7 @@ def generate_random_melody(requested_melody_length, midi_file, melody_track, sca
         elif chance_for_rest > random_chance > chance_for_adding:
             # Adding rest (silence):
             duration_of_rest = random.choice(SILENCE_DURATIONS_LIST)
-            if requested_melody_length - current_melody_length < 0.5:
+            if requested_melody_length - current_melody_length < min(SILENCE_DURATIONS_LIST):
                 break
 
             while duration_of_rest > requested_melody_length - current_melody_length:
@@ -296,10 +296,12 @@ def generate_random_melody(requested_melody_length, midi_file, melody_track, sca
         #  Here it Adds an Adding:
         if random.choice([0, 1, 2, 3]) > 0:
             #  triplets of notes
-            if requested_melody_length - current_melody_length < 0.75:  # calculating the remaining time left.
+            if requested_melody_length - current_melody_length < max(ADDINGS_DURATIONS_LIST):
+                # calculating the remaining time left.
                 break
-            duration = random.choice([0.125, 0.25])
+            duration = random.choice(SILENCE_DURATIONS_LIST)
             for i in range(3):
+                print(str(i)+'adding')
                 pitch_letter = random.choice(scale_notes)
                 pitch = DIATONIC_KEYS_PITCH_DICT[pitch_letter]
 
@@ -310,11 +312,11 @@ def generate_random_melody(requested_melody_length, midi_file, melody_track, sca
 
                 current_melody_length += duration
 
-                break
+            continue
+
         #  Pitch bend:
         pitch_quantity = random.choice(range(3000, 9000, 1000))  # range 3000 - 8000 in a 1000 jumps.
         MIDIFile.addPitchWheelEvent(midi_file, melody_track, channel, float(current_melody_length), pitch_quantity)
-        print('pitch bend')
 
 
 def play_midi_file(midi_file_path):
@@ -382,6 +384,7 @@ def main():
     with open(midi_file_name, 'wb') as output_file:
 
         midi_file.writeFile(output_file)
+    print('Your MIDI file is in : ' + midi_files_path + '\nBye!')
 
 
 if __name__ == '__main__':
