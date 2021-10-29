@@ -4,7 +4,7 @@ Automatic Music Maker :loud_sound:
 Written by *Dvir Alfi* .
 
 ### Developed to make music making easy and fast. :musical_score:
-**Random Melody is an Automatic Music Maker for musicians, composers and everyone that loves and are fascinated by music. :headphones: :microphone: :radio:
+**Random Melody is an Automatic Music Maker for musicians, composers and everyone that loves and are fascinated by music**. :headphones: :microphone: :radio:
 
 The program is written in Python and uses the Midiutil package for MIDI file manipulation.
 
