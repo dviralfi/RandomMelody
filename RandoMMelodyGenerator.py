@@ -127,7 +127,7 @@ ROMAN_LETTERS_VALUE_LIST = ['Roman Letter:', 'I', 'II', 'III', 'IV', 'V', 'VI', 
 
 # I – ii – iii – IV – V – vi – vii how the chords in any scale works (capital letter - major, small letter- minor)
 MAJOR_CHORDS_TYPES = ["major", "minor", "minor", "major", "major", "minor", "diminished"]
-MINOR_CHORDS_TYPES = ["minor", "dim", "minor", "minor", "minor", "major", "major"]
+MINOR_CHORDS_TYPES = ["minor", "dim", "major", "minor", "minor", "major", "major"]
 
 HARMONIC_MINOR_CHORDS_TYPES = ["min","dim","aug","min","maj","maj","dim"]
 HARMONIC_MINOR_EXT_CHORDS_TYPES = ["min/maj7","min-7th-flat-5","major-7th-flat-5","minor-7th","dom-7th","maj-7th","dim-7th"]
