@@ -1,2 +1,2 @@
-midiutil>=1.2.1.
+midiutil==1.2.1
 python >= 3.6
