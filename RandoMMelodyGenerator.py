@@ -19,6 +19,7 @@ The MIDI file can easily be used by your favorite DAW (Digital Audio Workstation
 
 You can choose various options for the program.
 The options you won't choose will be chosen randomly.
+
 When you execute the program at the command line you can pass it as arguments:
 
                         -p - Path to save the midi file.
@@ -27,6 +28,9 @@ When you execute the program at the command line you can pass it as arguments:
                         -a - the emotional Atmosphere of the chords progressions.
                         -l - the Length of the melody - Number of Beats.
                         -b the Bpm of the melody - in numbers.
+
+When the program is executed by the RandomMelodySite that I created also, it will get it arguments by calling
+the 'main' function with the appropriate arguments.
 
 """
 
