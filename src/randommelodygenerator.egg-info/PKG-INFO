@@ -1,5 +1,5 @@
 Metadata-Version: 2.1
-Name: random-melody-generator-dvir-alfi
+Name: randommelodygenerator
 Version: 0.0.1
 Summary: provides a MIDI file that contains chords and melody, randomly composed.
 Home-page: https://github.com/dviralfi/RandomMelody
