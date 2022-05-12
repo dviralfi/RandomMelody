@@ -7,3 +7,5 @@ testRM.py
 
 *.mp4
 RM-venv/
+
+dist/
