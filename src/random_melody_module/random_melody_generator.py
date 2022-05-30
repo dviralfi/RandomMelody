@@ -460,7 +460,8 @@ def generate_random_melody(requested_melody_length, midi_file, melody_track, sca
                 break
             duration = random.choice(SILENCE_DURATIONS_LIST)
             for i in range(3):
-                print(str(i)+'adding')
+                
+                
                 pitch_letter = random.choice(scale_notes)
                 pitch = CHROMATIC_KEYS_PITCH_DICT[pitch_letter]
 
@@ -489,7 +490,7 @@ def play_midi_file(midi_file_path):
 
     """
 
-    print(midi_file_path)
+    
     pass
 
 
@@ -497,15 +498,12 @@ def main(
     midi_file_path=os.getcwd(),scale_type=random.choice(list(SCALES_DICT.keys())),
     scale_key=random.choice(CHROMATIC_KEYS),chords_atmosphere=random.choice(list(ATMOSPHERE_DICT.keys())),
     melody_length=DEFAULT_MELODY_LENGTH,bpm=DEFAULT_BPM):
+  
     """
     Main Function
-    :return: New Midi File Path (The file has been created by the program)
+    :return: New Midi File Path (The file has been created by the program), and the bytes file of Class "MidiFile" from MidiUtil module
     """
-    #return r"static/mainapp/MidiFiles/x.mid"
-    # parsing the user arguments using Argparse:
-
     
-
     midi_file = MIDIFile(2)  # 2 tracks - one for the Chords, and one for the Melody.
 
     melody_track = 0
@@ -525,11 +523,12 @@ def main(
     generate_random_melody(melody_length, midi_file, melody_track, scale_notes)
 
     new_midi_file_path = get_unique_file_name(midi_file_path, 'RandoMMelody', 'mid').replace("\\", "/")
-
+    
     with open(new_midi_file_path, 'wb') as output_file:
         midi_file.writeFile(output_file)
-
-    return new_midi_file_path
+        
+    print("This is the Midi File Path: ",midi_file_path)
+    return new_midi_file_path,midi_file
     # print('Your MIDI file is in : ' + midi_files_path + '\nBye!')
 
 
