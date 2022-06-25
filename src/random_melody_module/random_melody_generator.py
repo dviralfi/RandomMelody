@@ -495,7 +495,7 @@ def play_midi_file(midi_file_path):
 
 
 def main(
-    midi_file_path=os.getcwd(),scale_type=random.choice(list(SCALES_DICT.keys())),
+    midi_file_path=os.getcwd(),username="RMS",scale_type=random.choice(list(SCALES_DICT.keys())),
     scale_key=random.choice(CHROMATIC_KEYS),chords_atmosphere=random.choice(list(ATMOSPHERE_DICT.keys())),
     melody_length=DEFAULT_MELODY_LENGTH,bpm=DEFAULT_BPM):
   
@@ -522,13 +522,12 @@ def main(
 
     generate_random_melody(melody_length, midi_file, melody_track, scale_notes)
 
-    new_midi_file_path = get_unique_file_name(midi_file_path, 'RandoMMelody', 'mid').replace("\\", "/")
+    new_midi_file_path = get_unique_file_name(midi_file_path, username+'_RandoMMelody', 'mid').replace("\\", "/")
     
     with open(new_midi_file_path, 'wb') as output_file:
         midi_file.writeFile(output_file)
         
-    print("This is the Midi File Path: ",midi_file_path)
-    return new_midi_file_path,midi_file
+    return new_midi_file_path
     # print('Your MIDI file is in : ' + midi_files_path + '\nBye!')
 
 
@@ -538,6 +537,7 @@ if __name__ == '__main__':
                                                          "default path - your current working directory.",
                         default=os.getcwd())
     parser.add_argument('-k', '--scale_key', help="the key of the scale", default=random.choice(CHROMATIC_KEYS))
+    
     parser.add_argument('-t', '--scale_type', help="the type of the scale",
                         default=random.choice(list(SCALES_DICT.keys())))
     parser.add_argument('-a', '--chords_atmosphere', help="the atmosphere of the chord progression",
@@ -553,4 +553,4 @@ if __name__ == '__main__':
     melody_length = int(args.melody_length)
     bpm = int(args.bpm)
 
-    main(midi_file_path,scale_type,scale_key,chords_atmosphere,melody_length,bpm)
+    main(midi_file_path,"RMS",scale_type,scale_key,chords_atmosphere,melody_length,bpm)
