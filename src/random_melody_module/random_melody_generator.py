@@ -495,7 +495,7 @@ def play_midi_file(midi_file_path):
 
 
 def main(
-    midi_file_path=os.getcwd(),username="RMS",scale_type=random.choice(list(SCALES_DICT.keys())),
+    midi_file_path=os.getcwd(),file_name='',scale_type=random.choice(list(SCALES_DICT.keys())),
     scale_key=random.choice(CHROMATIC_KEYS),chords_atmosphere=random.choice(list(ATMOSPHERE_DICT.keys())),
     melody_length=DEFAULT_MELODY_LENGTH,bpm=DEFAULT_BPM):
   
@@ -522,13 +522,18 @@ def main(
 
     generate_random_melody(melody_length, midi_file, melody_track, scale_notes)
 
-    new_midi_file_path = get_unique_file_name(midi_file_path, username+'_RandoMMelody', 'mid').replace("\\", "/")
-    
+    # if the package is used locally
+    if file_name == '': 
+        new_midi_file_path = get_unique_file_name(midi_file_path, 'RandoMMelody', 'mid').replace("\\", "/")
+
+    # if the package is used in server, it ables the server to control the name of the file bein created:
+    else: 
+        new_midi_file_path = os.path.join(midi_file_path,file_name) + '.mid'
+
     with open(new_midi_file_path, 'wb') as output_file:
         midi_file.writeFile(output_file)
         
-    return new_midi_file_path
-    # print('Your MIDI file is in : ' + midi_files_path + '\nBye!')
+    return new_midi_file_path,midi_file
 
 
 if __name__ == '__main__':
@@ -553,4 +558,4 @@ if __name__ == '__main__':
     melody_length = int(args.melody_length)
     bpm = int(args.bpm)
 
-    main(midi_file_path,"RMS",scale_type,scale_key,chords_atmosphere,melody_length,bpm)
+    main(midi_file_path,'',scale_type,scale_key,chords_atmosphere,melody_length,bpm)
