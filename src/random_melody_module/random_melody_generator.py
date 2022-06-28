@@ -533,7 +533,7 @@ def main(
     with open(new_midi_file_path, 'wb') as output_file:
         midi_file.writeFile(output_file)
         
-    return new_midi_file_path,midi_file
+    return new_midi_file_path
 
 
 if __name__ == '__main__':
