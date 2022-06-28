@@ -528,7 +528,7 @@ def main(
 
     # if the package is used in server, it ables the server to control the name of the file bein created:
     else: 
-        new_midi_file_path = os.path.join(midi_file_path,file_name) + '.mid'
+        new_midi_file_path = os.path.join(midi_file_path,file_name) 
 
     with open(new_midi_file_path, 'wb') as output_file:
         midi_file.writeFile(output_file)
