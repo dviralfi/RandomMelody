@@ -16,7 +16,9 @@ The MIDI file can easily be used by your favorite DAW[^1]. :control_knobs:
 
 ## Installation Guide 
 
-`pip install git+https://github.com/dviralfi/RandomMelody.git` 
+```
+pip install git+https://github.com/dviralfi/RandomMelody.git
+```
 
 You can also clone/fork the repo and run it manually, dont forget to install requirements: `pip install -r requirements.txt`
 
@@ -39,18 +41,19 @@ When you execute the program at the command line you can pass it as arguments:
 
 ### Cloned installation
 
-`random_melody_generator.py -p path/to/save/file -k G# -t minor -a happy -b 128`
+```
+random_melody_generator.py -p path/to/save/file -k G# -t minor -a happy -b 128
+```
 
 ### PIP installation
 
-`from random_melody_module import random_melody_generator`
+```
+from random_melody_module import random_melody_generator
+```
 
-`random_melody_generator.main(
-                file_name="myfile",
-                chords_atmosphere="sad",
-                scale_key="F",
-                midi_file_path="path/to/save/file"
-                )`
+```
+random_melody_generator.main(file_name="myfile",chords_atmosphere="sad",scale_key="F",midi_file_path="path/to/save/file")
+```
 
 
 [^1]:DAW - Digital Audio Workstation
