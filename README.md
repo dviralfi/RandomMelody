@@ -12,17 +12,13 @@ It provides a MIDI file that contains chords :notes: and melody :musical_note: ,
 
 The MIDI file can easily be used by your favorite DAW[^1]. :control_knobs:
 
-* If you don't have such program, you can use this website, that convert midi file to actual music : https://onlinesequencer.net/import
+* If you don't have such program, you can use this website, where you can edit and hear the MIDI file: https://onlinesequencer.net/import
 
 ## Installation Guide 
 
-Just download the Python file 'RandoMMelodyGenerator.py' file, and run it, you are good to go! :cartwheeling:
+`pip install git+https://github.com/dviralfi/RandomMelody.git` 
 
-### requirements
-
-A Python Interpreter :snake:
-
-The *Midiutil* package that you can easily install with pip (write this command in cmd) : `pip install midiutil` 
+You can also clone/fork the repo and run it manually, dont forget to install requirements: `pip install -r requirements.txt`
 
 #### Optional Arguments
 
@@ -32,15 +28,29 @@ You can choose various options for the program.
 
 When you execute the program at the command line you can pass it as arguments:
 
--  -p : Path to save the midi files.
--  -k : Key of the scale - a letter.
--  -t : Type of the scale.
--  -a : Emotional Atmosphere of the chords progressions.
--  -l : Length of the melody, Number of Beats.
--  -b : Bpm of the melody in numbers.
+-  -p : Path to save the midi files
+-  -k : Key of the scale
+-  -t : Type of the scale
+-  -a : Emotional Atmosphere of the chords progressions. (happy, pop, joyful, cheerful, dark, emotional, sad, confusing, crying, building)
+-  -l : Length of the melody, Number of Beats
+-  -b : Bpm of the melody in numbers
 
+## Quick Start:
 
+### Cloned installation
 
+`random_melody_generator.py -p path/to/save/file -k G# -t minor -a happy -b 128`
+
+### PIP installation
+
+`from random_melody_module import random_melody_generator`
+
+`random_melody_generator.main(
+                file_name="myfile",
+                chords_atmosphere="sad",
+                scale_key="F",
+                midi_file_path="path/to/save/file"
+                )`
 
 
 [^1]:DAW - Digital Audio Workstation
