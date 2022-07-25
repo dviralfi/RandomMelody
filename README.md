@@ -52,7 +52,7 @@ from random_melody_module import random_melody_generator
 ```
 
 ```
-random_melody_generator.main(file_name="myfile",chords_atmosphere="sad",scale_key="F",midi_file_path="path/to/save/file")
+random_melody_generator.main(file_name="myfile", scale_key="F", midi_file_path="path/to/save/file")
 ```
 
 
